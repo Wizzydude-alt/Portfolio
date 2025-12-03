@@ -1,6 +1,17 @@
 *{
     position: relative;
 }
+nav{
+  font-size: small;
+}
+ul{
+  display: flex;
+  gap: 7rem;
+  padding-left: 12rem;
+}
+li{
+  list-style: none;
+}
 .footer {
     background-color: #1e1e1e;
     color: #f1f1f1;
