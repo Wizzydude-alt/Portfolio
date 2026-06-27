@@ -3,53 +3,398 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css">
-  <title>Wisdom - Designer Portfolio</title>
+  <meta name="description" content="Wisdom — Frontend Web Developer & UI Designer based in Nigeria. Building beautiful, functional web experiences." />
+  <title>Wisdom · Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>I'm Wisdom and I am a Web Developer</h1>
-      <hr />
-      <div class="subtitle">........... :) ...........</div>
-    </header>
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">W<span>!</span>SD</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <section class="content">
-      <div class="content-text">
-        <p>
-          I'm passionate about my work because I believe that a good design can make a real difference in the world — it can help businesses attract new customers, build stronger relationships,
-          and create a more positive brand image. I love the challenge of taking someone's vision and turning it into reality.
-        </p>
-      </div>
-      <div class="content-image">
-        <img src="Cropped Picture.jpg" alt="Wisdom's design work or profile picture" />
-      </div>
-    </section>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
   </div>
 
-</body>
-</html>
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="hero">
+    <!-- Animated blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
-<div class="writeup">
-  
-</head>
-<body>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="eyebrow"> Hiiiii :), I'm</span>
+        <h1 class="hero-name"><i>Wisdom</i><span class="accent"></span></h1>
+        <div class="hero-role">
+          <span class="role-badge">Frontend Developer</span>
+          <span class="role-sep">·</span>
+          <span class="role-badge">UI Designer</span>
+        </div>
+        <p class="hero-desc">
+          I craft high-quality, beautiful web experiences that help businesses grow, connect with their audience, and stand out in a competitive world.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Years Coding</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Passion Driven</span>
+          </div>
+        </div>
+      </div>
 
+      <div class="hero-image-wrap">
+        <div class="hero-image-ring"></div>
+        <img src="Cropped Picture.jpg" alt="Wisdom Utme — Frontend Developer" class="hero-avatar" />
+        <div class="floating-card card-1">
+          <span class="fc-icon">💻</span>
+          <span class="fc-text">Web Development</span>
+        </div>
+        <div class="floating-card card-2">
+          <span class="fc-icon">🎨</span>
+          <span class="fc-text">UI/UX Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section class="section about-section" id="about">
+    <div class="section-inner">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Turning ideas into <span class="accent">digital realities</span></h2>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm <strong><i>Wisdom</i></strong>, a passionate frontend web developer and UI designer based in Nigeria. I believe that great design is more than just aesthetics — it's about solving real problems and creating meaningful experiences.
+          </p>
+          <p>
+            I love the challenge of taking someone's vision and turning it into a pixel-perfect, fully functional web product.I build with precision, purpose, and a whole lot of attention to detail.
+          </p>
+          <p>
+            When I'm not coding, I'm studying design patterns, exploring new technologies, and constantly levelling up my craft.
+          </p>
+
+          <div class="about-cta-row">
+            <a href="mailto:wisdomutme2022@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="tel:+2347033657048" class="btn btn-ghost">Call Me</a>
+          </div>
+        </div>
+
+        <div class="about-card-grid">
+          <div class="info-card">
+            <span class="info-icon">📍</span>
+            <p class="info-label">Based In</p>
+            <p class="info-value">Nigeria</p>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">🎓</span>
+            <p class="info-label">Focus</p>
+            <p class="info-value">Frontend Dev</p>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">🚀</span>
+            <p class="info-label">Experience</p>
+            <p class="info-value">3+ Years</p>
+          </div>
+          <div class="info-card">
+            <span class="info-icon">✅</span>
+            <p class="info-label">Available</p>
+            <p class="info-value available-dot">For Hire</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section class="section skills-section" id="skills">
+    <div class="section-inner">
+      <div class="section-label">What I Know</div>
+      <h2 class="section-title">My <span class="accent">Skills & Tools</span></h2>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>HTML5</h3>
+          <p>Semantic, accessible markup that powers great web experiences.</p>
+          <div class="skill-bar"><div class="skill-fill" style="--fill: 92%"></div></div>
+          <span class="skill-pct">92%</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <h3>CSS3 / Tailwind</h3>
+          <p>Responsive layouts, animations, and modern design systems.</p>
+          <div class="skill-bar"><div class="skill-fill" style="--fill: 88%"></div></div>
+          <span class="skill-pct">90%</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <h3>JavaScript</h3>
+          <p>Interactive UIs, DOM manipulation, and dynamic functionality.</p>
+          <div class="skill-bar"><div class="skill-fill" style="--fill: 80%"></div></div>
+          <span class="skill-pct">80%</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⚛️</div>
+          <h3>React.js</h3>
+          <p>Component-driven apps with hooks, routing, and state management.</p>
+          <div class="skill-bar"><div class="skill-fill" style="--fill: 78%"></div></div>
+          <span class="skill-pct">80%</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔧</div>
+          <h3>Vite & Tooling</h3>
+          <p>Modern build setups with fast bundlers and dev environments.</p>
+          <div class="skill-bar"><div class="skill-fill" style="--fill: 75%"></div></div>
+          <span class="skill-pct">75%</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🖼️</div>
+          <h3>UI/UX Design</h3>
+          <p>Figma wireframes, design systems, and user-first thinking.</p>
+          <div class="skill-bar"><div class="skill-fill" style="--fill: 70%"></div></div>
+          <span class="skill-pct">70%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section class="section projects-section" id="projects">
+    <div class="section-inner">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">Things I've <span class="accent">Built</span></h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="project-header">
+            <span class="project-tag">React · Vite · Tailwind</span>
+            <span class="project-badge">Featured</span>
+          </div>
+          <h3 class="project-title">Whiz Eye Care Platform</h3>
+          <p class="project-desc">
+            A full multi-page healthcare web application for my final year project. Features an optical shop with cart & checkout, appointment booking, specialist directory, blog system, and a comprehensive services portal.
+          </p>
+          <div class="project-tags">
+            <span>React Router</span>
+            <span>Shopping Cart</span>
+            <span>Form Validation</span>
+            <span>Responsive</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank" rel="noreferrer" class="btn btn-primary btn-sm">Live Demo →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-tag">HTML · CSS · JS</span>
+          </div>
+          <h3 class="project-title">Personal Portfolio v1</h3>
+          <p class="project-desc">
+            My first personal portfolio site built from scratch with vanilla HTML, CSS, and JavaScript to showcase my skills and journey as a developer.
+          </p>
+          <div class="project-tags">
+            <span>Responsive Design</span>
+            <span>Animations</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-ghost btn-sm">Coming Soon</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-tag">React · Tailwind</span>
+          </div>
+          <h3 class="project-title">UI Component Library</h3>
+          <p class="project-desc">
+            A personal collection of reusable, accessible React components built with Tailwind CSS — cards, modals, drawers, forms, and more.
+          </p>
+          <div class="project-tags">
+            <span>Reusable Components</span>
+            <span>Accessibility</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-ghost btn-sm">In Progress</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section class="section contact-section" id="contact">
+    <div class="section-inner">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's <span class="accent">Work Together</span></h2>
+      <p class="contact-sub">
+        Have a project in mind? Need a website built? I'd love to hear from you. Reach out and let's make something great.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <a href="mailto:wisdomutme2022@gmail.com" class="contact-card">
+            <span class="cc-icon">✉️</span>
+            <div>
+              <p class="cc-label">Email</p>
+              <p class="cc-value">wisdomutme2022@gmail.com</p>
+            </div>
+          </a>
+          <a href="tel:+2347033657048" class="contact-card">
+            <span class="cc-icon">📞</span>
+            <div>
+              <p class="cc-label">Phone</p>
+              <p class="cc-value">+234 703 365 7048</p>
+            </div>
+          </a>
+          <div class="contact-card no-hover">
+            <span class="cc-icon">📍</span>
+            <div>
+              <p class="cc-label">Location</p>
+              <p class="cc-value">Nigeria</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="fname">Your Name</label>
+            <input type="text" id="fname" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="femail">Your Email</label>
+            <input type="email" id="femail" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Message</label>
+            <textarea id="fmessage" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Send Message</button>
+          <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="footer">
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:wisdomutme2022@gmail.com" style="color: #f1f1f1; text-decoration: underline;">wisdomutme2022@gmail.com</a></p>
-    <p>Phone: <a href="tel:+2347033657048" style="color: #f1f1f1; text-decoration: underline;">+234 703 365 7048</a></p>
-    <p class="thanks">Thank ya :)</p>
+    <p>© 2026 <i>Wisdom</i>  · Built with 💙 by <strong>W!SD0M</strong></p>
+    <p class="footer-sub">Frontend Developer · UI Designer · Nigeria</p>
   </footer>
-  
-</body>
-</html>
 
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('active');
+    });
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('active');
+    }
 
+    // Scroll-triggered entrance animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.skill-card, .project-card, .info-card, .contact-card').forEach(el => {
+      el.classList.add('fade-up');
+      observer.observe(el);
+    });
 
+    // Animate skill bars when they enter the viewport
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+            bar.style.width = bar.style.getPropertyValue('--fill');
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.skills-grid').forEach(el => barObserver.observe(el));
 
+    // Contact form mock submit
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const success = document.getElementById('formSuccess');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.style.display = 'none';
+        success.style.display = 'block';
+        document.getElementById('contactForm').reset();
+      }, 1200);
+    }
+
+    // Active nav link highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinksAll.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
 
 </body>
 </html>
