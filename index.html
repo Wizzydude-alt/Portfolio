@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
 
   <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav class="navbar" id="navbar">
@@ -22,6 +24,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Hire Me</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -44,21 +47,19 @@
 
     <div class="hero-content">
       <div class="hero-text">
-        <span class="eyebrow"> Hiiiii :), I'm</span>
-        <h1 class="hero-name"><i>Wisdom</i><span class="accent"></span></h1>
-        <div class="hero-role">
-          <span class="role-badge">Frontend Developer</span>
-          <span class="role-sep">·</span>
-          <span class="role-badge">UI Designer</span>
+        <span class="eyebrow hero-stagger" style="animation-delay: 0.1s"> Hiiiii :), I'm</span>
+        <h1 class="hero-name hero-stagger" style="animation-delay: 0.3s"><i>Wisdom</i><span class="accent"></span></h1>
+        <div class="hero-role hero-stagger" style="animation-delay: 0.5s">
+          <span class="role-badge"><span id="typewriter"></span><span class="typewriter-cursor"></span></span>
         </div>
-        <p class="hero-desc">
+        <p class="hero-desc hero-stagger" style="animation-delay: 0.7s">
           I craft high-quality, beautiful web experiences that help businesses grow, connect with their audience, and stand out in a competitive world.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions hero-stagger" style="animation-delay: 0.9s">
           <a href="#projects" class="btn btn-primary">View My Work</a>
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
         </div>
-        <div class="hero-stats">
+        <div class="hero-stats hero-stagger" style="animation-delay: 1.1s">
           <div class="stat">
             <span class="stat-num">5+</span>
             <span class="stat-label">Projects Built</span>
@@ -204,9 +205,33 @@
       <div class="section-label">Portfolio</div>
       <h2 class="section-title">Things I've <span class="accent">Built</span></h2>
 
+      <div class="project-filters" id="projectFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="react">React</button>
+        <button class="filter-btn" data-filter="vanilla">Vanilla JS</button>
+      </div>
+
       <div class="projects-grid">
 
-        <div class="project-card featured">
+        <div class="project-card featured" data-category="react">
+          <div class="project-header">
+            <span class="project-tag">React · Tailwind</span>
+            <span class="project-badge">New</span>
+          </div>
+          <h3 class="project-title">COC RSU Website</h3>
+          <p class="project-desc">
+            A modern, responsive church website built with React and Tailwind CSS. Features dynamic routing, mobile-friendly navigation, and interactive forms.
+          </p>
+          <div class="project-tags">
+            <span>React Router</span>
+            <span>Tailwind CSS</span>
+            <span>Responsive</span>
+          </div>
+          <div class="project-links">
+            <a href="https://church-website-beta-ten.vercel.app" target="_blank" rel="noreferrer" class="btn btn-primary btn-sm">Live Demo →</a>
+          </div>
+        </div>
+        <div class="project-card featured" data-category="react">
           <div class="project-header">
             <span class="project-tag">React · Vite · Tailwind</span>
             <span class="project-badge">Featured</span>
@@ -222,11 +247,11 @@
             <span>Responsive</span>
           </div>
           <div class="project-links">
-            <a href="#" target="_blank" rel="noreferrer" class="btn btn-primary btn-sm">Live Demo →</a>
+            <a href="" target="_blank" rel="noreferrer" class="btn btn-primary btn-sm">Live Demo →</a>
           </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" data-category="vanilla">
           <div class="project-header">
             <span class="project-tag">HTML · CSS · JS</span>
           </div>
@@ -243,7 +268,7 @@
           </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" data-category="react">
           <div class="project-header">
             <span class="project-tag">React · Tailwind</span>
           </div>
@@ -324,7 +349,103 @@
     <p class="footer-sub">Frontend Developer · UI Designer · Nigeria</p>
   </footer>
 
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
   <script>
+    // ════ NEW FEATURES JS ════
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeToggle.textContent = '🌙';
+    }
+    themeToggle.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙';
+      }
+    });
+
+    // Custom Cursor
+    const cursor = document.getElementById('customCursor');
+    if (window.matchMedia("(pointer: fine)").matches) {
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card, input, textarea');
+      hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+      });
+    }
+
+    // Typewriter Effect
+    const words = ["Frontend Developer", "UI Designer", "Creative Thinker"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterElement = document.getElementById('typewriter');
+    function typeEffect() {
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        charIndex--;
+      } else {
+        charIndex++;
+      }
+      typewriterElement.textContent = currentWord.substring(0, charIndex);
+      let typeSpeed = isDeleting ? 50 : 100;
+      if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+      setTimeout(typeEffect, typeSpeed);
+    }
+    setTimeout(typeEffect, 1000);
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Project Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.classList.remove('hide');
+          } else {
+            card.classList.add('hide');
+          }
+        });
+      });
+    });
+
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -343,11 +464,16 @@
       mobileMenu.classList.remove('active');
     }
 
-    // Scroll-triggered entrance animations
+    // Scroll-triggered entrance animations with stagger
     const observer = new IntersectionObserver((entries) => {
+      let delay = 0;
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          delay += 100; // 100ms stagger between elements appearing at the same time
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.12 });

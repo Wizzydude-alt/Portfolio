@@ -59,6 +59,12 @@ ul { list-style: none; }
   background: var(--indigo);
   color: #fff;
   box-shadow: 0 0 24px rgba(99,102,241,0.35);
+  animation: pulseGlow 2.5s infinite;
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 24px rgba(99,102,241,0.35); }
+  50% { box-shadow: 0 0 40px rgba(99,102,241,0.6); }
+  100% { box-shadow: 0 0 24px rgba(99,102,241,0.35); }
 }
 .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-2px); box-shadow: 0 0 36px rgba(99,102,241,0.5); }
 .btn-ghost {
@@ -242,10 +248,17 @@ ul { list-style: none; }
   margin-bottom: 1rem;
 }
 .hero-name .accent {
-  background: linear-gradient(135deg, var(--indigo-light), var(--emerald));
+  background: linear-gradient(135deg, var(--indigo-light), var(--emerald), var(--amber), var(--indigo-light));
+  background-size: 300% 300%;
+  animation: gradientFlow 6s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 .hero-role {
   display: flex;
@@ -428,9 +441,9 @@ ul { list-style: none; }
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 .skill-card:hover {
-  border-color: rgba(99,102,241,0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(99,102,241,0.12);
+  border-color: var(--indigo-light);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 50px rgba(99,102,241,0.15), inset 0 0 15px rgba(255,255,255,0.02);
 }
 .skill-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
 .skill-card h3 { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
@@ -469,9 +482,9 @@ ul { list-style: none; }
   transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 .project-card:hover {
-  border-color: rgba(99,102,241,0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(99,102,241,0.1);
+  border-color: var(--indigo-light);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(99,102,241,0.2), inset 0 0 20px rgba(255,255,255,0.02);
 }
 .project-card.featured {
   grid-column: span 2;
@@ -599,6 +612,97 @@ ul { list-style: none; }
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+.hero-stagger {
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ════ NEW FEATURES (Light Mode, Cursor, Back to Top, Filters) ════ */
+:root[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card2: #f1f5f9;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --border: rgba(0,0,0,0.08);
+}
+:root[data-theme="light"] .navbar.scrolled { background: rgba(248, 250, 252, 0.85); }
+:root[data-theme="light"] .nav-logo { color: #0f172a; }
+:root[data-theme="light"] .hero-name { color: #0f172a; }
+:root[data-theme="light"] .stat-num { color: #0f172a; }
+:root[data-theme="light"] .info-value { color: #0f172a; }
+:root[data-theme="light"] .skill-card h3 { color: #0f172a; }
+:root[data-theme="light"] .project-title { color: #0f172a; }
+:root[data-theme="light"] .section-title { color: #0f172a; }
+:root[data-theme="light"] .nav-links a:hover, :root[data-theme="light"] .nav-links a.active { color: #0f172a; }
+:root[data-theme="light"] .btn-ghost { color: #0f172a; border-color: rgba(0,0,0,0.1); }
+:root[data-theme="light"] .btn-ghost:hover { background: rgba(0,0,0,0.05); }
+:root[data-theme="light"] .about-text p strong { color: #0f172a; }
+:root[data-theme="light"] .cc-value { color: #0f172a; }
+:root[data-theme="light"] .contact-card { color: #0f172a; }
+:root[data-theme="light"] .hero-avatar { border-color: rgba(0,0,0,0.1); filter: grayscale(0%); }
+
+.custom-cursor {
+  position: fixed; top: 0; left: 0; width: 20px; height: 20px;
+  border: 2px solid var(--indigo); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  display: none;
+}
+@media (pointer: fine) {
+  .custom-cursor { display: block; }
+  body, a, button, input, textarea { cursor: none !important; }
+}
+.custom-cursor.hovering {
+  width: 40px; height: 40px;
+  background-color: rgba(99,102,241,0.15);
+  border-color: transparent;
+}
+
+.back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 45px; height: 45px; background: var(--indigo); color: white;
+  border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; cursor: pointer; z-index: 99;
+  opacity: 0; pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s, background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.back-to-top:hover { background: var(--indigo-dark); transform: translateY(-3px); }
+
+.project-filters {
+  display: flex; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+}
+.filter-btn {
+  background: transparent; color: var(--text-muted); border: 1px solid var(--border);
+  padding: 0.5rem 1.2rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--indigo); color: #fff; border-color: var(--indigo);
+}
+.project-card.hide { display: none; }
+
+.typewriter-cursor {
+  display: inline-block; width: 2px; background-color: var(--indigo-light);
+  animation: blink 0.7s infinite; margin-left: 2px; height: 1em; vertical-align: middle;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.theme-toggle {
+  background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted);
+  transition: color 0.3s; margin-left: 1rem;
+}
+.theme-toggle:hover { color: var(--indigo-light); }
 
 /* ════ RESPONSIVE ════ */
 @media (max-width: 900px) {
