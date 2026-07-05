@@ -24,7 +24,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Hire Me</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -354,25 +353,20 @@
 
   <script>
     // ════ NEW FEATURES JS ════
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    if (currentTheme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '🌙';
-    }
-    themeToggle.addEventListener('click', () => {
-      let theme = document.documentElement.getAttribute('data-theme');
-      if (theme === 'light') {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'dark');
-        themeToggle.textContent = '☀️';
-      } else {
+    // Auto Theme Toggle (every 6 seconds smoothly)
+    let isLight = localStorage.getItem('theme') === 'light';
+    if (isLight) document.documentElement.setAttribute('data-theme', 'light');
+
+    setInterval(() => {
+      isLight = !isLight;
+      if (isLight) {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
-        themeToggle.textContent = '🌙';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
       }
-    });
+    }, 6000);
 
     // Custom Cursor
     const cursor = document.getElementById('customCursor');
@@ -389,7 +383,7 @@
     }
 
     // Typewriter Effect
-    const words = ["Frontend Developer", "UI Designer", "Creative Thinker"];
+    const words = ["Frontend Developer", "UI Designer", "Creative Thinker", "Saggitarius:)"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;

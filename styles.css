@@ -734,3 +734,8 @@ ul { list-style: none; }
   .about-card-grid { grid-template-columns: 1fr 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
 }
+
+/* ════ SMOOTH THEME AUTO-TOGGLE ════ */
+body, .section, .navbar, .mobile-menu, .hero-avatar, .info-card, .skill-card, .project-card, .contact-card, .footer, input, textarea, .btn-ghost {
+  transition: background-color 2s ease, background 2s ease, color 2s ease, border-color 2s ease, transform var(--transition), box-shadow var(--transition);
+}
