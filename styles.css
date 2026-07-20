@@ -170,7 +170,7 @@ ul { list-style: none; }
 .mobile-menu a:hover { color: #fff; }
 
 /* ════ SECTION UTILS ════ */
-.section { padding: 7rem 2rem; }
+.section { padding: 3.5rem 2rem; }
 .section-inner { max-width: 1100px; margin: 0 auto; }
 .section-label {
   font-size: 0.7rem;
@@ -198,7 +198,7 @@ ul { list-style: none; }
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 8rem 2rem 4rem;
+  padding: 6rem 2rem 3rem;
 }
 
 /* Animated blobs */
@@ -306,14 +306,10 @@ ul { list-style: none; }
 .hero-image-ring {
   position: absolute;
   inset: -12px;
-  border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
-  background: linear-gradient(135deg, var(--indigo), #8b5cf6, var(--emerald));
-  animation: morphRing 6s ease-in-out infinite alternate;
-  opacity: 0.7;
-}
-@keyframes morphRing {
-  from { border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%; }
-  to   { border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%; }
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(16,185,129,0.3));
+  filter: blur(15px);
+  opacity: 0.8;
 }
 .hero-avatar {
   position: relative;
@@ -322,36 +318,17 @@ ul { list-style: none; }
   height: 100%;
   object-fit: cover;
   object-position: top;
-  border-radius: 32px;
-  border: 3px solid rgba(255,255,255,0.08);
-  filter: grayscale(20%);
-  transition: filter var(--transition);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
-.hero-avatar:hover { filter: grayscale(0%); }
+.hero-avatar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
+}
 
-/* Floating mini-cards */
-.floating-card {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(17,17,24,0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.5rem 0.9rem;
-  z-index: 2;
-  animation: float 4s ease-in-out infinite alternate;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-.card-1 { top: 10%; left: -30px; animation-delay: 0s; }
-.card-2 { bottom: 12%; right: -30px; animation-delay: 1.5s; }
-.fc-icon { font-size: 1rem; }
-.fc-text { font-size: 0.7rem; font-weight: 600; color: #fff; white-space: nowrap; }
-@keyframes float {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-8px); }
-}
+
 
 /* Scroll indicator */
 .scroll-indicator {
@@ -727,10 +704,9 @@ ul { list-style: none; }
 }
 
 @media (max-width: 600px) {
-  .section { padding: 5rem 1.25rem; }
-  .hero { padding: 7rem 1.25rem 3rem; }
+  .section { padding: 2.5rem 1.25rem; }
+  .hero { padding: 5rem 1.25rem 2rem; }
   .hero-image-wrap { width: 200px; height: 240px; }
-  .floating-card { display: none; }
   .about-card-grid { grid-template-columns: 1fr 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
 }
